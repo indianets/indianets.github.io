@@ -1,0 +1,18 @@
+pages:
+  stage: deploy
+  environment: production
+  publish: public
+  script:
+    - mkdir .public
+    - cp -r * .public/
+    - sed -i 's/github/gitlab/g' .public/*
+    - rm -rf public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+    exclude:
+      - .git*
+      - .git*/**/*
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

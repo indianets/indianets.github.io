@@ -5,7 +5,7 @@ pages:
   script:
     - mkdir .public
     - cp -r * .public/
-    - sed -i 's/github/gitlab/g' .public/*
+    - sed -i 's/github/gitlab/g' .public/robots.txt .public/sitemap.xml
     - rm -rf public
     - mv .public public
   artifacts:
